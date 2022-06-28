@@ -309,8 +309,9 @@ public class AgentEventHandler {
          */
         if (agentUser != null &&
                 agentno != null &&
-                StringUtils.equals(agentno, agentUser.getAgentno()) &&
-                !StringUtils.equals(agentUser.getStatus(), MainContext.AgentUserStatusEnum.END.toString())) {
+                StringUtils.equals(agentno, agentUser.getAgentno())
+                //&& !StringUtils.equals(agentUser.getStatus(), MainContext.AgentUserStatusEnum.END.toString())) {
+        ) {
             logger.info("[onEvent] condition：visitor online.");
 
             /**

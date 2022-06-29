@@ -36,6 +36,8 @@ function chatoperaLoad(url) {
         }
     };
 
+
+
     xhr.open('GET', url);
     xhr.send(null);
 }

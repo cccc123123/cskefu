@@ -626,6 +626,10 @@ public class IMController extends Handler {
 
         map.put("pugHelper", new PugHelper());
 
+        String studentName = request.getParameter("studentName");
+        String city = request.getParameter("city");
+        String studentMobile = request.getParameter("studentMobile");
+
         if (sessionMessageObj != null) {
             request.getSession().setAttribute("Sessionusername", sessionMessageObj.get("username"));
             request.getSession().setAttribute("Sessioncid", sessionMessageObj.get("cid"));
@@ -663,6 +667,9 @@ public class IMController extends Handler {
                 nickname = struname + "@" + strcname;
             } else {
                 nickname = "Guest_" + "@" + randomUserId;
+            }
+            if(StringUtils.isNotBlank(studentName)){
+                nickname = studentName+"_"+city+"_"+studentMobile;
             }
 
             view.addObject("nickname", nickname);
@@ -1045,6 +1052,13 @@ public class IMController extends Handler {
         ModelAndView view = request(super.createView("/apps/im/text"));
         CousultInvite invite = OnlineUserProxy.consult(
                 appid, StringUtils.isBlank(orgi) ? Constants.SYSTEM_ORGI : orgi);
+
+        String studentName = request.getParameter("studentName");
+        String city = request.getParameter("city");
+        String studentMobile = request.getParameter("studentMobile");
+        view.addObject("studentName", studentName);
+        view.addObject("city", city);
+        view.addObject("studentMobile", studentMobile);
 
         view.addObject("hostname", request.getServerName());
         view.addObject("port", request.getServerPort());

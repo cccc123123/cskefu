@@ -1054,11 +1054,13 @@ public class IMController extends Handler {
                 appid, StringUtils.isBlank(orgi) ? Constants.SYSTEM_ORGI : orgi);
 
         String studentName = request.getParameter("studentName");
+        String studentId = request.getParameter("studentId");
         String city = request.getParameter("city");
         String studentMobile = request.getParameter("studentMobile");
         view.addObject("studentName", studentName);
         view.addObject("city", city);
         view.addObject("studentMobile", studentMobile);
+        view.addObject("studentId", studentId);
 
         view.addObject("hostname", request.getServerName());
         view.addObject("port", request.getServerPort());
@@ -1093,6 +1095,9 @@ public class IMController extends Handler {
         view.addObject("email", email);
         view.addObject("phone", phone);
         view.addObject("userid", userid);
+        if (StringUtils.isNotBlank(studentId)) {
+            view.addObject("userid", studentId);
+        }
 
         view.addObject("product", product);
         view.addObject("description", description);
